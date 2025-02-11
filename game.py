@@ -50,11 +50,15 @@ class Player(pygame.sprite.Sprite):
    
    # size
    def shrink(self):
+      temp = self.inventory
       if(self.size == "medium"):self.init(self.rect.x, self.rect.y-self.MEDIUM[1], "big", self.current_room)
       if(self.size == "small"):self.init(self.rect.x, self.rect.y-self.SMALL[1], "medium", self.current_room)
+      self.inventory = temp
    def grow(self):
+      temp = self.inventory
       if(self.size == "medium"):self.init(self.rect.x, self.rect.y, "small", self.current_room)
       if(self.size == "big"):self.init(self.rect.x, self.rect.y, "medium", self.current_room)
+      self.inventory = temp
    def apply_size(self, size):
       new_size = self.sizes[size]
       self.rect.size = new_size
